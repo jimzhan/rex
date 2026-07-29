@@ -94,7 +94,7 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 │   │   ├── package.json
 │   │   └── tsconfig.json
 │   │
-│   └── database/                   # (Optional) DB‑only package for migrations/seeding
+│   └── db/                         # (Optional) DB‑only package for migrations/seeding
 │       ├── src/
 │       │   ├── seed.ts
 │       │   └── client.ts           # Drizzle client (re‑exported for api)
@@ -111,8 +111,8 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 │   │   ├── staging/
 │   │   └── prod/
 │   ├── modules/                    # Reusable Terraform modules
-│   │   ├── networking/
-│   │   ├── database/
+│   │   ├── network/
+│   │   ├── db/
 │   │   └── app/
 │   └── global/                     # Shared resources (e.g., IAM, VPC)
 │
