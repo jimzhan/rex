@@ -10,6 +10,7 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 - **Database** PostgreSQL
 - **Caching** Redis
 - **Package Manager** pnpm
+- **Container** Podman
 - **Infrastructure** Terraform
 - **Testing** Vitest (Unit), Playwrite (E2E)
 - **Linting** Biome
@@ -18,101 +19,131 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 ## Project Structure
 
 ```
-my-app/
+<project-root>/
 ├── packages/
 │   ├── api/                        # Backend (Hono)
 │   │   ├── src/
-│   │   │   ├── routes/             # Route handlers (grouped by domain)
+│   │   │   ├── index.ts            # App entry (Hono server)
+│   │   │   ├── app.ts              # Hono app instance, middleware, routes
+│   │   │   ├── routes/             # Route handlers (controllers)
 │   │   │   │   ├── health.ts
 │   │   │   │   ├── auth.ts
 │   │   │   │   └── users.ts
-│   │   │   ├── services/           # Business logic (domain services)
+│   │   │   ├── services/           # Business logic (use cases)
 │   │   │   │   ├── auth.service.ts
 │   │   │   │   └── user.service.ts
 │   │   │   ├── repositories/       # Data access layer (Drizzle queries)
 │   │   │   │   ├── user.repo.ts
 │   │   │   │   └── session.repo.ts
-│   │   │   ├── middleware/         # Hono middleware (auth, logging, etc.)
+│   │   │   ├── middleware/         # Custom Hono middleware
 │   │   │   │   ├── auth.ts
 │   │   │   │   └── logger.ts
-│   │   │   ├── validators/         # Zod schemas (request/response validation)
-│   │   │   │   ├── auth.schema.ts
+│   │   │   ├── schemas/            # Zod validation schemas (shared with frontend?)
 │   │   │   │   └── user.schema.ts
-│   │   │   ├── lib/                # Shared utilities (Redis client, config, etc.)
-│   │   │   │   ├── redis.ts
-│   │   │   │   └── config.ts
-│   │   │   ├── types/              # Internal types (not shared with frontend)
-│   │   │   │   └── custom.d.ts
-│   │   │   └── index.ts            # App entry (Hono app export)
-│   │   ├── tests/
+│   │   │   ├── utils/              # Helpers (JWT, hashing, etc.)
+│   │   │   └── types/              # Internal TypeScript types
+│   │   ├── test/
 │   │   │   ├── unit/               # Vitest unit tests
-│   │   │   └── integration/        # API integration tests
+│   │   │   └── integration/        # API integration tests (Vitest)
 │   │   ├── drizzle/                # Drizzle migrations & schema
-│   │   │   ├── schema/             # Table definitions
+│   │   │   ├── schema/             # Drizzle table definitions
 │   │   │   │   ├── users.ts
 │   │   │   │   └── sessions.ts
-│   │   │   ├── migrations/         # Auto-generated migration files
-│   │   │   └── drizzle.config.ts
+│   │   │   ├── migrations/         # Auto‑generated migration files
+│   │   │   └── drizzle.config.ts   # Drizzle config
 │   │   ├── package.json
-│   │   ├── tsconfig.json
-│   │   ├── vitest.config.ts
-│   │   └── .env.example
+│   │   ├── tsconfig.json           # Extends root tsconfig
+│   │   ├── vitest.config.ts        # Unit/integration test config
+│   │   └── .env.example            # API‑specific env vars
 │   │
 │   ├── web/                        # Frontend (React + Vite)
 │   │   ├── src/
+│   │   │   ├── main.tsx            # React entry
+│   │   │   ├── App.tsx
 │   │   │   ├── features/           # Feature‑based modules
 │   │   │   │   ├── auth/
 │   │   │   │   │   ├── components/
 │   │   │   │   │   ├── hooks/
-│   │   │   │   │   └── services/
+│   │   │   │   │   └── api/        # API calls to backend
 │   │   │   │   └── dashboard/
-│   │   │   ├── shared/             # Cross‑cutting code
-│   │   │   │   ├── ui/             # Reusable presentational components
-│   │   │   │   ├── lib/            # Utilities (API client, formatters)
-│   │   │   │   └── types/          # Shared frontend types
-│   │   │   ├── pages/              # Route‑level pages (React Router)
-│   │   │   ├── App.tsx
-│   │   │   └── main.tsx
-│   │   ├── tests/
+│   │   │   ├── shared/             # Shared UI, utilities, types
+│   │   │   │   ├── ui/             # Reusable components (Button, Card, etc.)
+│   │   │   │   ├── lib/            # Helpers, fetchers, formatters
+│   │   │   │   └── types/          # Shared TS types (can re‑export from @myapp/shared)
+│   │   │   ├── hooks/              # Global custom hooks
+│   │   │   ├── context/            # React Context providers
+│   │   │   └── routes/             # Route definitions (React Router)
+│   │   ├── test/
 │   │   │   └── e2e/                # Playwright E2E tests
+│   │   │       └── auth.spec.ts
 │   │   ├── index.html
 │   │   ├── package.json
 │   │   ├── tsconfig.json
 │   │   ├── vite.config.ts
-│   │   └── playwright.config.ts
+│   │   ├── playwright.config.ts    # Playwright config
+│   │   └── .env.example
 │   │
-│   └── shared/                     # Shared code (types, constants, utilities)
+│   ├── shared/                     # Shared code between api and web
+│   │   ├── src/
+│   │   │   ├── types/              # Shared TypeScript interfaces, enums
+│   │   │   │   ├── user.ts
+│   │   │   │   └── api.ts
+│   │   │   ├── constants/          # App‑wide constants
+│   │   │   ├── utils/              # Pure helpers (date formatting, etc.)
+│   │   │   └── validators/         # Zod schemas reused by both frontend & backend
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   │
+│   └── database/                   # (Optional) DB‑only package for migrations/seeding
 │       ├── src/
-│       │   ├── types/              # Shared TypeScript interfaces/types
-│       │   │   ├── user.ts
-│       │   │   └── api.ts
-│       │   ├── constants/          # App‑wide constants (status codes, etc.)
-│       │   └── utils/              # Pure utility functions
+│       │   ├── seed.ts
+│       │   └── client.ts           # Drizzle client (re‑exported for api)
+│       ├── drizzle/                # Symlink or copy from api/drizzle
 │       ├── package.json
 │       └── tsconfig.json
 │
-├── infra/                          # Terraform infrastructure (IaC)
+├── infra/                          # Infrastructure as Code (Terraform)
 │   ├── environments/
 │   │   ├── dev/
 │   │   │   ├── main.tf
 │   │   │   ├── variables.tf
 │   │   │   └── terraform.tfvars
 │   │   ├── staging/
-│   │   └── production/
+│   │   └── prod/
 │   ├── modules/                    # Reusable Terraform modules
 │   │   ├── networking/
 │   │   ├── database/
-│   │   └── compute/
-│   └── shared/                     # Shared Terraform configs (backend, providers)
+│   │   └── app/
+│   └── global/                     # Shared resources (e.g., IAM, VPC)
 │
-├── docker-compose.yml              # Local services (PostgreSQL, Redis)
-├── package.json                    # Root package.json (workspace definition)
-├── pnpm-workspace.yaml             # pnpm workspaces config
-├── tsconfig.json                   # Base TypeScript config (inherited by packages)
-├── biome.json                      # Biome configuration (lint + format)
-├── .env.example                    # Root environment variables template
+├── docker/                         # Podman/Docker build files
+│   ├── api.Dockerfile
+│   ├── web.Dockerfile              # Optional static build (or served via S3)
+│   ├── db.Dockerfile               # Postgres with init scripts (optional)
+│   └── redis.Dockerfile            # Redis config (optional)
+│
+├── scripts/                        # Utility scripts
+│   ├── dev-up.sh                   # Start all services locally (Podman Compose)
+│   └── migrate.sh                  # Run Drizzle migrations
+│
+├── tests/                          # Global E2E (Playwright) – can also live in packages/web
+│   └── global-setup.ts             # Setup for E2E (e.g., test database)
+│
+├── .github/                        # CI/CD workflows
+│   └── workflows/
+│       ├── ci.yml
+│       └── deploy.yml
+│
+├── .biome.json                     # Biome configuration (Lint + Format)
+├── .env.example                    # Root env (shared vars, e.g., DATABASE_URL)
 ├── .gitignore
-├── .pre-commit-config.yaml         # Optional: pre‑commit hooks
-├── README.md
-└── AGENTS.md                       # Your AI‑agent instructions
+├── .npmrc                          # pnpm settings (strict‑peer‑deps, etc.)
+├── package.json                    # Root package.json (private workspaces)
+├── pnpm-workspace.yaml             # Workspace definition
+├── tsconfig.base.json              # Shared TypeScript base configuration
+├── tsconfig.json                   # Root tsconfig (references workspaces)
+├── vitest.workspace.ts             # Vitest workspace config (runs all packages)
+├── docker-compose.yml              # Podman‑compatible compose for local dev
+├── terraform.tf                    # (optional) root Terraform wrapper
+└── README.md
 ```
