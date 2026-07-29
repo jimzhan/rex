@@ -26,6 +26,7 @@ Before copying any files, inspect the user's current working directory (`process
 - [ ] `opencode.json`
 - [ ] `skills-lock.json`
 - [ ] `.opencode/` directory
+- [ ] `docs/` directory
 
 **Rule**: Identify any existing OpenCode, agent, or skill settings. You must preserve user-specific instructions and project conventions.
 
@@ -34,6 +35,7 @@ Before copying any files, inspect the user's current working directory (`process
 ### A. Copy (Only if they do NOT exist)
 Safely copy the following template files and directories into the target project root:
 - `.opencode/`
+- `docs/rules/`
 - `skills-lock.json`
 - `opencode.json`
 
