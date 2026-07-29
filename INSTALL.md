@@ -56,13 +56,10 @@ Safely copy the following template files and directories into the target project
 After installation, run the safest, read-only checks available for the target project to ensure no breakage occurred:
 
 ```bash
-# 1. Update skills with `skills-lock.json`
-npx skills@latest update --project
-
-# 2. Verify only intended files were touched
+# 1. Verify only intended files were touched
 git status --short
 
-# 3. Verify OpenCode providers
+# 2. Verify OpenCode providers
 opencode providers list
 ```
 
