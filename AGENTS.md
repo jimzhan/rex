@@ -3,22 +3,24 @@
 > **Context:** These directives govern the Primary Coding Agent within the OpenCode orchestration layer. They are designed to minimize LLM hallucinations, prevent over-engineering, and enforce strict alignment with the Loop Engineering feedback cycle.
 > **Tradeoff:** These guidelines bias toward caution, precision, and simplicity over raw generation speed. 
 
----
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+## Core Principles
 
-## 1. Think Before Coding
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+### 1. Think Before Coding
 
 **Don't assume. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
+
 - State your assumptions explicitly. If uncertain, ask.
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 
-## 2. Simplicity First
+
+### 2. Simiplicity First
 
 **Minimum code that solves the problem. Nothing speculative.**
 
@@ -30,7 +32,8 @@ Before implementing:
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
-## 3. Surgical Changes
+
+### 3. Surgical Changes
 
 **Touch only what you must. Clean up only your own mess.**
 
@@ -46,7 +49,8 @@ When your changes create orphans:
 
 The test: Every changed line should trace directly to the user's request.
 
-## 4. Goal-Driven Execution
+
+### 4. Goal-Driven Execution
 
 **Define success criteria. Loop until verified.**
 
@@ -64,6 +68,12 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
----
 
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+## Project Context
+
+**CRITICAL**: When you encounter a reference like `@docs/...`, use your **Read** to load it **only when needed** for the specific task at hand. Treat the loaded content as mandatory instructions that override any general guidance.
+
+1. For technology stack: `@docs/rules/technology.md`
+2. For architecture: `@docs/rules/architecture.md`
+3. For API design: `@docs/rules/openapi.md`
+4. For testing: `@docs/rules/testing.md`
