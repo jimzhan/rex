@@ -49,7 +49,7 @@ Safely copy the following template files and directories into the target project
 2. **Inspect**: Scan the target project for existing configuration and documentation files (refer to Section 4).
 3. **Copy**: Transfer missing template directories and files from the temp directory to the target project.
 4. **Merge**: Safely append the OpenSpec git-discipline block to `AGENTS.md` if it exists.
-5. **Conflict Resolution**: If `opencode.json`, `skills-lock.json`, or `.opencode/` already exist, **pause execution**. Compare the template version/structure with the target version. Present the differences to the user and **ask for explicit approval** before replacing, merging, or restructuring anything.
+5. **Conflict Resolution**: If `opencode.json`, `skills-lock.json`, `.opencode/`, or `docs/` already exist, **pause execution**. Compare the template version/structure with the target version. Present the differences to the user and **ask for explicit approval** before replacing, merging, or restructuring anything.
 6. **Preservation Guarantee**: Ensure the target project's product code (`src/`, `lib/`, etc.), package files (`package.json`, `requirements.txt`), application docs, and existing tests remain 100% unchanged.
 7. **Summarize**: Verify the resulting file tree and output a clear, bulleted summary of exactly what was added or modified.
 
