@@ -7,6 +7,9 @@
     "explore": { "disable": true },
     "general": { "disable": true }
   },
+  "instructions": [
+    "docs/rules/*.md"
+  ],
   "mcp": {
     "codegraph": {
       "enabled": true,
