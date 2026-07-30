@@ -1,11 +1,12 @@
 # AGENTS.md: OpenCode Behavioral Guidelines
 
-> **Context:** These directives govern the Primary Coding Agent within the OpenCode orchestration layer. They are designed to minimize LLM hallucinations, prevent over-engineering, and enforce strict alignment with the Loop Engineering feedback cycle.
-> **Tradeoff:** These guidelines bias toward caution, precision, and simplicity over raw generation speed. 
+> - **Context:** These directives govern the Primary Coding Agent within the OpenCode orchestration layer. They are designed to minimize LLM hallucinations, prevent over-engineering, and enforce strict alignment with the Loop Engineering feedback cycle.
+> - **Tradeoff:** These guidelines bias toward caution, precision, and simplicity over raw generation speed. 
 
 ---
 
 ## 1. Context & Assumption Validation
+
 **Directive: Don't assume. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
@@ -29,6 +30,7 @@ Before implementing:
 
 
 ## 3. Surgical Changes
+
 **Directive: Touch only what you must. Clean up only your own mess.**
 
 When making changes: 
@@ -42,6 +44,7 @@ When making changes:
 
 
 ## 4. Goal-Driven Loop Execution (Goal-Driven Execution)
+
 **Directive: Define success criteria. Loop until verified.**
 
 Transform tasks into verifiable goals:
