@@ -10,7 +10,7 @@
 - **Caching** Redis
 - **Database** PostgreSQL
 - **Frontend**
-    - **Runtime** Node.js (LTS)
+    - **Runtime** Node.js v24 (LTS)
     - **Language** TypeScript (strict mode)
     - **Framework** React
     - **Routing** React Router
@@ -19,6 +19,6 @@
     - **State Management** Zustand
     - **Testing** Vitest (Unit), Playwright (E2E)
     - **Linting** Biome
-- **Infrastructure** Terraform
+- **IaC** Terraform
 - **Build Tool** Nx
 - **Container** Podman
