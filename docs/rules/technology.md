@@ -18,6 +18,10 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 
 ## Project Structure
 
+**CRITICAL** 
+- replace `<project-root>` with the name of current working directory.
+- co-locate unit tests with the implementation code.
+
 ```
 <project-root>/
 ├── packages/
@@ -32,19 +36,20 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 │   │   │   ├── services/           # Business logic (use cases)
 │   │   │   │   ├── auth.service.ts
 │   │   │   │   └── user.service.ts
-│   │   │   ├── repositories/       # Data access layer (Drizzle queries)
+│   │   │   ├── repos/              # Data access layer (Drizzle queries)
 │   │   │   │   ├── user.repo.ts
 │   │   │   │   └── session.repo.ts
 │   │   │   ├── middleware/         # Custom Hono middleware
 │   │   │   │   ├── auth.ts
-│   │   │   │   └── logger.ts
+│   │   │   │   ├── auth.test.ts
+│   │   │   │   ├── logger.ts
+│   │   │   │   └── logger.test.ts
 │   │   │   ├── schemas/            # Zod validation schemas (shared with frontend?)
 │   │   │   │   └── user.schema.ts
 │   │   │   ├── utils/              # Helpers (JWT, hashing, etc.)
 │   │   │   └── types/              # Internal TypeScript types
-│   │   ├── test/
-│   │   │   ├── unit/               # Vitest unit tests
-│   │   │   └── integration/        # API integration tests (Vitest)
+│   │   ├── tests/
+│   │   │   └── api/                # API integration tests (Vitest)
 │   │   ├── drizzle/                # Drizzle migrations & schema
 │   │   │   ├── schema/             # Drizzle table definitions
 │   │   │   │   ├── users.ts
@@ -73,7 +78,7 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 │   │   │   ├── hooks/              # Global custom hooks
 │   │   │   ├── context/            # React Context providers
 │   │   │   └── routes/             # Route definitions (React Router)
-│   │   ├── test/
+│   │   ├── tests/
 │   │   │   └── e2e/                # Playwright E2E tests
 │   │   │       └── auth.spec.ts
 │   │   ├── index.html
@@ -88,7 +93,7 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 │   │   │   ├── types/              # Shared TypeScript interfaces, enums
 │   │   │   │   ├── user.ts
 │   │   │   │   └── api.ts
-│   │   │   ├── constants/          # App‑wide constants
+│   │   │   ├── consts/             # App‑wide constants
 │   │   │   ├── utils/              # Pure helpers (date formatting, etc.)
 │   │   │   └── validators/         # Zod schemas reused by both frontend & backend
 │   │   ├── package.json
@@ -120,7 +125,7 @@ This is a production‑grade full‑stack TypeScript application, managed with *
 │   ├── api.Dockerfile
 │   ├── web.Dockerfile              # Optional static build (or served via S3)
 │   ├── db.Dockerfile               # Postgres with init scripts (optional)
-│   └── redis.Dockerfile            # Redis config (optional)
+│   └── cache.Dockerfile            # Redis config (optional)
 │
 ├── scripts/                        # Utility scripts
 │   ├── dev-up.sh                   # Start all services locally (Podman Compose)
