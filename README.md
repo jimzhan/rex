@@ -14,3 +14,25 @@ Fetch and follow instructions from https://raw.githubusercontent.com/jimzhan/rex
 > [!TIP]
 > Configured keys are stored in `$HOME/.local/share/opencode/auth.json`. It's recommended to start with the free model for your initial test runs.
 
+
+### 2. End-to-End Workflow
+
+```mermaid
+---
+config:
+  look: handDrawn
+  theme: forest
+---
+flowchart LR
+    Think["<b>/think</b> <i>requirement</i>"]
+    Plan["<b>/plan</b> for <i>execution</i>"]
+    Build["<b>/build</b> againsts <i>exec plans</i>"]
+    Review["<b>/review</b> <i>implementations</i>"]
+    Ship["<b>/ship</b> to <i>production</i>"]
+
+    Think --> Plan
+    Plan --> Build
+    Build --> Review
+    Review --> Ship
+```
+
