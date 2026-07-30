@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
-  "preset": "deepseek",
+  "preset": "opencode",
   "presets": {
     "opencode": {
       "orchestrator": { "model": "opencode/big-pickle", "temperature": 0.4, "skills": ["*"], "mcps": ["*", "!context7"] },
