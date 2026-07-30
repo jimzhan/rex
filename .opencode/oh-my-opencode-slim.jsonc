@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
   "preset": "deepseek",
   "presets": {
-    "opencode-zen-free": {
+    "opencode": {
       "orchestrator": { "model": "opencode/big-pickle", "temperature": 0.4, "skills": ["*"], "mcps": ["*", "!context7"] },
       "oracle":       { "model": "opencode/big-pickle", "temperature": 0.4, "variant": "max", "skills": ["simplify"], "mcps": [] },
       "explorer":     { "model": "opencode/deepseek-v4-flash-free", "temperature": 0.2, "skills": [], "mcps": [] },
