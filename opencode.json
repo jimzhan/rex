@@ -8,7 +8,7 @@
     "general": { "disable": true }
   },
   "instructions": [
-    "docs/rules/*.md"
+    ".opencode/rules/*.md"
   ],
   "mcp": {
     "codegraph": {
