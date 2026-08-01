@@ -66,7 +66,7 @@ git status --short
 opencode providers list
 
 # 4. Set up skills
-/setup-matt-pocock-skills
+Run a `/setup-matt-pocock-skills` session.
 ```
 
 **Fallback Rule**: If `opencode` commands are unavailable in the user's environment, clearly report this limitation to the user, but leave the installed files in place so the user can verify them manually later.
