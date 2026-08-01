@@ -24,7 +24,7 @@ description: Explore user intent, convert it into a detailed execution plan, and
 - **Output Artifact:** Write the final execution plan **inside the newly created Git worktree** from Step 2.
 - Upon completion, inform the user to review the plan.
 
-4. **Run `implement`**
+4. **Run `/subagent-driven-development`**
 - **Prerequisite Check:** Before initiating this step, **MUST** verify that:
   - Step 1 has received explicit user approval.
   - Step 2 has successfully created and verified the new Git worktree.
