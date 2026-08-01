@@ -24,15 +24,10 @@ config:
   theme: forest
 ---
 flowchart LR
-    Think["<b>/think</b> <i>requirement</i>"]
-    Plan["<b>/plan</b> for <i>execution</i>"]
-    Build["<b>/build</b> againsts <i>exec plans</i>"]
+    Build["<b>/build</b> <i>what's required</i>"]
     Review["<b>/review</b> <i>implementations</i>"]
     Ship["<b>/ship</b> to <i>production</i>"]
 
-    Think --> Plan
-    Plan --> Build
     Build --> Review
     Review --> Ship
 ```
-

@@ -1,23 +1,25 @@
 # Technology Stack 
 
-- **Auth Strategy** Session-based with Redis
+- **Auth Strategy** Session-based with Redis (session store)
+- **Runtime** Node.js v24 (LTS)
+- **Language** TypeScript (strict mode)
 - **Backend**
-    - **Runtime** Node.js v24 (LTS)
-    - **Language** JavaScript (ES Modules)
-    - **Framework** Fastify
+    - **Framework** Hono
     - **ORM** Drizzle
     - **Testing** Vitest (Unit & Integration)
+    - **Validation** Zod
+    - **API Documentation** @hono/zod-openapi
+    - **Authentication** better-auth
+    - **Logging** Pino
 - **Caching** Redis
-- **Database** PostgreSQL and all tables **MUST** use UUID version 7 (time‑ordered) as the primary key
+- **Database** PostgreSQL (all tables **MUST** use UUID version 7, time‑ordered, as the primary key)
 - **Frontend**
-    - **Runtime** Node.js v24 (LTS)
-    - **Language** TypeScript (strict mode)
     - **Framework** React + React Router
     - **Build Tool** Vite
     - **CSS Framework** TailwindCSS
     - **State Management** Zustand
     - **Testing** Vitest (Unit), Playwright (E2E)
-    - **Linting & Formatting** Biome
+    - **Linting & Formatting** @biomejs/biome
 - **IaC** Terraform
 - **Container** Podman
 - **Package Manager** pnpm
