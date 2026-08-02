@@ -1,33 +1,43 @@
 <a href="#"><img alt="rex" src="https://raw.githubusercontent.com/goanywhere/rex/assets/images/rex.png" width="160px" height="64px"></a>
 ===
-***Rex*** is an opinionated AI-powered application development boilerplate built for model-agnostic and Multi-Agent System (MAS) AI engineering. ***What's included?***
+***Rex*** is an opinionated AI-powered boilerplate designed for model-agnostic and Multi-Agent System (MAS) AI engineering. Built entirely on top of the OpenCode ecosystem, it provides battlefield-tested defaults to ship distributed web applications faster.
 
-- **[OpenCode](https://github.com/anomalyco/opencode)** - Model-agnostic agent orchestration.
-  - [Oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim) - A Multi-Agent System (MAS) for OpenCode, featuring a specialized agent team built-in to scan codebases, fetch docs, audit architecture, build UI, and run scoped implementation tasks via a single orchestrator. Meet your team [here](https://github.com/alvinunreal/oh-my-opencode-slim#meet-the-pantheon).
-- **[Superpowers](https://github.com/obra/superpowers)** - a set of composable skills and battlefield tested instructions covering:
-  1. Architecture
-  2. Technology Stack
-  3. Database
-  4. OpenAPI
-  5. Environment
-  6. Testing
-  7. Git
-  8. Deployment
+***What's included?***
+
+- **[OpenCode](https://github.com/anomalyco/opencode)** – Model-agnostic agent orchestration.
+  - **[Oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim)** – A Multi-Agent System (MAS) for OpenCode, featuring a specialized agent team that scans codebases, fetches docs, audits architecture, builds UI, and runs scoped implementation tasks via a single orchestrator. [Meet your team here](https://github.com/alvinunreal/oh-my-opencode-slim#meet-the-pantheon).
+- **[Superpowers](https://github.com/obra/superpowers)** – A composable skillset with critical engineering experience covering:
+  - Architecture
+  - Technology Stack
+  - Database
+  - OpenAPI
+  - Environment
+  - Testing
+  - Git
+  - Deployment
 
 
-### 1. Installation
+### 1. Prerequisites
 
-- [Install](https://opencode.ai/docs#install) `OpenCode` and [configure](https://opencode.ai/docs/#configure) your LLM provider(s).
-- *Paste* the following instructions in `OpenCode`.
+- **Node.js** 20 LTS or higher
+
+
+### 2. Installation
+
+1. [Install](https://opencode.ai/docs#install) `OpenCode` and [configure](https://opencode.ai/docs/#configure) your LLM provider(s).
+2. Start a new OpenCode session and paste the following prompt:
 
 ```text
 Fetch and follow instructions from https://raw.githubusercontent.com/jimzhan/rex/refs/heads/main/INSTALL.md
 ```
+
 > [!TIP]
-> Configured keys are stored in `$HOME/.local/share/opencode/auth.json`. It's recommended to start with the free model for your initial test runs.
+> Configured API keys are stored in `$HOME/.local/share/opencode/auth.json`. We recommend starting with a free model for your initial test runs.
 
 
-### 2. End-to-End Workflow
+### 3. End-to-End Workflow
+
+The following OpenCode slash-commands guide you through the entire development lifecycle:
 
 ```mermaid
 ---
@@ -36,10 +46,10 @@ config:
   theme: forest
 ---
 flowchart LR
-    Build["<b>/build</b> <i>what's required</i>"]
-    Review["<b>/review</b> <i>implementations</i>"]
-    Ship["<b>/ship</b> to <i>production</i>"]
+  Build["<b>/build</b> <i>what's required</i>"]
+  Review["<b>/review</b> <i>implementations</i>"]
+  Ship["<b>/ship</b> to <i>production</i>"]
 
-    Build --> Review
-    Review --> Ship
+  Build --> Review
+  Review --> Ship
 ```
