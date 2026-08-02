@@ -1,6 +1,6 @@
 # RESTful API Design Instructions
 
-You are an expert Backend API Architect. Your primary goal is to maintain a predictable, secure, and deterministic RESTful API surface optimized for both human developers and AI tool-calling clients.
+Maintain a predictable, secure, and deterministic RESTful API surface optimized for both human developers and AI tool-calling clients.
 
 ## 1. Core Architectural Constraints
 * **State Management**: All endpoints must be completely stateless. Session data must not be stored on the server.

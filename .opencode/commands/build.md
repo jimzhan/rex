@@ -3,29 +3,29 @@ name: build
 description: Explore user intent, convert it into a detailed execution plan, and implement it via isolated Git worktrees.
 ---
 
-**Critical Rule:** Execute the following 4 steps in **strict sequential order**. **DO NOT** proceed to the next step until the current step's **completion criteria** are fully met. If any step fails irrecoverably, halt and report the failure to the user immediately.
+**Critical Rule:** Execute the following 4 steps in **strict sequential order**. **DO NOT** proceed to the next step until the current step's **completion criteria** are fully met. If any step fails irrecoverably, halt immediately and report the failure to the user with a clear explanation.
 
-1. **Run `/brainstorming`**: 
-- Analyze the user's requirement.
-- Explore edge cases, technical trade-offs, architectural constraints, and ambiguities.
-- Generate a list of critical clarifying questions for the user.
-- **Completion Criterion:** Wait for the user to review the brainstorming output and provide **explicit written approval** (e.g., "Approved" or "Proceed") before moving to Step 2.
+1. **Start exploring user intent**:
+   - Run `/brainstorming` to deeply analyze the user's requirement, clarify ambiguities, and surface potential risks or edge cases.
+   - **Completion Criterion:** Wait for the user to review the output and provide **explicit written approval** (e.g., "Approved", "Proceed", or similar affirmative response). **DO NOT** move to Step 2 until this approval is received.
 
-2. **Run `/using-git-worktrees`**: 
-- Create a dedicated Git worktree to isolate the planning session (e.g., naming convention: `<YYYYMMDD>-<feature-name>`).
-- Verify the worktree is successfully created and accessible.
-- **Completion Criterion:** Confirm the new Git worktree is ready. Do not move to Step 3 until this finishes successfully.
+2. **Create an isolated workspace**:
+  - Run `using-git-worktrees` to create a dedicated Git worktree (Naming convention: `<YYYYMMDD>-<ticket-id>-<feature-name>` if a ticket ID is present; otherwise, use `<YYYYMMDD>-<feature-name>`.) that will isolate all planning and implementation artifacts.
+  - Verify that the worktree is successfully created, the directory exists, and the new branch is checked out.
+  - **Completion Criterion:** Confirm the new Git worktree is ready. **DO NOT** move to Step 3 until this finishes successfully.
 
-3. **Run `/writing-plans`**: 
-- **Prerequisite Check:** Before initiating this step, **MUST** verify that:
-  - Step 1 has received explicit user approval.
-  - Step 2 has successfully created and verified the new Git worktree.
-- Once verified, execute `/writing-plans` to deeply analyze the requirement and generate a detailed, actionable execution plan.
-- **Output Artifact:** Write the final execution plan **inside the newly created Git worktree** from Step 2.
-- Upon completion, inform the user to review the plan.
+3. **Create design spec and detailed execution tasks**:
+   - **Prerequisite Check:** Before initiating this step, **MUST** verify:
+     - **Step 1** has received explicit user approval.
+     - **Step 2** has successfully created and verified the new Git worktree.
+   - Once verified, switch into the new worktree directory and run `/writing-plans` to generate a detailed, actionable execution plan.
+   - **Output Artifact:** Write the final execution plan **inside the newly created Git worktree** from Step 2.
+   - **Completion Criterion:** Wait for the user to provide explicit written approval of the execution plan. **DO NOT** move to Step 4 until this approval is received.
 
-4. **Run `/subagent-driven-development`**
-- **Prerequisite Check:** Before initiating this step, **MUST** verify that:
-  - Step 1 has received explicit user approval.
-  - Step 2 has successfully created and verified the new Git worktree.
-  - Step 3 has successfully generated a detailed, actionable execution plan inside the worktree.
+4. **Start implementation**:
+   - **Prerequisite Check:** Before initiating this step, **MUST** verify:
+     - **Step 1** has received explicit user approval.
+     - **Step 2** has successfully created and verified the new Git worktree.
+     - **Step 3** has successfully generated the execution plan inside the worktree **and** the user has explicitly approved that plan.
+   - Ensure you are operating within the isolated worktree directory, then run `/subagent-driven-development` to execute the approved plan task by task, committing progress incrementally.
+   - Monitor the subagent's output and handle any intermediate failures according to its own error-handling rules. If the subagent cannot proceed, halt and report to the user.

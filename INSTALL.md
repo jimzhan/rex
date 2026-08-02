@@ -25,6 +25,7 @@ Before copying any files, inspect the user's current working directory (`process
 - [ ] `AGENTS.md`
 - [ ] `opencode.json`
 - [ ] `skills-lock.json`
+- [ ] `.editorconfig`
 - [ ] `.opencode/` directory
 
 **Rule**: Identify any existing OpenCode, agent, or skill settings. You must preserve user-specific instructions and project conventions.
@@ -36,6 +37,7 @@ Safely copy the following template files and directories into the target project
 - `.opencode/`
 - `skills-lock.json`
 - `opencode.json`
+- `.editorconfig`
 
 ### B. Merge (If they already exist)
 - **`AGENTS.md`**: **Append** the instruction block to the end of the file. **Do not** remove, truncate, or alter any existing user instructions.
