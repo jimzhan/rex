@@ -1,6 +1,18 @@
 <a href="#"><img alt="rex" src="https://raw.githubusercontent.com/goanywhere/rex/assets/images/rex.png" width="160px" height="64px"></a>
 ===
-***Rex*** is an opinionated AI-powered application development boilerplate built for model-agnostic and Multi-Agent System (MAS) AI engineering.
+***Rex*** is an opinionated AI-powered application development boilerplate built for model-agnostic and Multi-Agent System (MAS) AI engineering. ***What's included?***
+
+- **[OpenCode](https://github.com/anomalyco/opencode)** - Model-agnostic agent orchestration.
+  - [Oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim) - A Multi-Agent System (MAS) for OpenCode, featuring a specialized agent team built-in to scan codebases, fetch docs, audit architecture, build UI, and run scoped implementation tasks via a single orchestrator. Meet your team [here](https://github.com/alvinunreal/oh-my-opencode-slim#meet-the-pantheon).
+- **[Superpowers](https://github.com/obra/superpowers)** - a set of composable skills and battlefield tested instructions covering:
+  1. Architecture
+  2. Technology Stack
+  3. Database
+  4. OpenAPI
+  5. Environment
+  6. Testing
+  7. Git
+  8. Deployment
 
 
 ### 1. Installation
