@@ -1,6 +1,6 @@
-# Technology Stack 
+# Technology Stack & Governance
 
-Enforce the following technology stack for implementation **unless** `@docs/rules/technology.md` is present (in which case, use `@docs/rules/technology.md` instead).
+Enforce the following technology stack for implementation.
 
 - **Auth Strategy**: Session-based with Redis (session store)
 - **Runtime**: Node.js v24 (LTS)

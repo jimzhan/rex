@@ -1,11 +1,11 @@
-# RESTful API Design Instructions
+# REST API Design Specification (OpenAPI 3.0+)
 
-Maintain a predictable, secure, and deterministic RESTful API surface optimized for both human developers and AI tool-calling clients.
+Mandatory specifications for all public and internal REST APIs.
 
 ## 1. Core Architectural Constraints
 * **State Management**: All endpoints must be completely stateless. Session data must not be stored on the server.
 * **Controller Pattern**: Use final, single-action invokable controllers (one class/file per endpoint).
-* **ID Strategy**: Never use auto-incrementing integer IDs. Expose only cryptographically secure UUIDv7 or ObjectId to the client.
+* **ID Strategy**: Never use auto-incrementing integer IDs. Expose only cryptographically secure UUIDv7 to the client.
 
 ## 2. Resource Naming & URI Conventions
 * **Casing**: Use `kebab-case` for all URI paths (e.g., `/api/users`).
@@ -30,7 +30,7 @@ All non-2xx responses must return a standardized JSON error object following the
   "title": "Bad Request",
   "status": 400,
   "detail": "The provided email address is already registered.",
-  "instance": "/api/v1/users",
+  "instance": "/api/users",
   "errors": {
     "email": ["Must be a valid, unique email address."]
   }
@@ -52,4 +52,3 @@ All non-2xx responses must return a standardized JSON error object following the
 ## 7. Verification & Definition Workflows
 * Every route modification requires a corresponding update to the OpenAPI 3.1 schema definition file (`/docs/openapi.yaml`).
 * Ensure all schemas are explicit, fully descriptive, and block unknown properties (`additionalProperties: false`) to safeguard against LLM hallucinations.
-
