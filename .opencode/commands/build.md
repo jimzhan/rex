@@ -1,6 +1,9 @@
 ---
 name: build
 description: Explore user intent, convert it into a detailed execution plan, and implement it via isolated Git worktrees.
+permission:
+  *: allow
+  rm *: ask
 ---
 
 **Critical Rule:** Execute the following 4 steps in **strict sequential order**. **DO NOT** proceed to the next step until the current step's **completion criteria** are fully met. If any step fails irrecoverably, halt immediately and report the failure to the user with a clear explanation.
