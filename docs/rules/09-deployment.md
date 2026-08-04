@@ -5,11 +5,18 @@ Defines the pipeline, containerization, and observability requirements.
 ## 1. CI/CD Pipeline Standards
 - **Pipeline Trigger:** Code push to `main` triggers the staging pipeline. Tag creation triggers the production pipeline.
 - **Stages:**
-    1.  **Build:** Build Docker image.
-    2.  **Test:** Run Unit/Integration tests.
-    3.  **Security Scan:** Vulnerability scanning.
-    4.  **Deploy:** Deploy.
+  1. **Lint** Statically analyzes source codes.
+  2. **Test** Runs unit and integration tests.
+  3. **Build** Compiles code, bundles assets,
+  4. **Scan** Performs security & vulnerability checks.
+  5. **Stage** Deploys artifact for final live‑environment validation.
+  6. **e2e** Runs end-to-end user-journey tests.
+  7. **Deploy** Promotes to production .
 - **Rollback:** The pipeline must support one-click rollback to the previous image tag.
+- **Artifact Repository:** Push Docker images to AWS ECR / GAR / Docker Hub with Git SHA tags.
+- **Deployment Strategy:** Blue/Green or Canary deployments for zero-downtime releases.
+- **Feature Flags:** Integrate LaunchDarkly / Flagsmith to decouple deployment from release.
+
 
 ## 2. Containerization Norms
 - **Base Image:** Use `distroless` or `alpine` for minimal attack surface.
@@ -25,4 +32,4 @@ Defines the pipeline, containerization, and observability requirements.
 ## 4. Observability Requirements
 - **Logging:** JSON structured logging. All logs must include `traceId`, `serviceName`, and `environment`.
 - **Metrics:** Expose `/metrics` endpoint for Prometheus scraping. Track: Request Rate, Error Rate, and Latency (RED method).
-- **Alerting:** Define SLOs. Alerts must trigger if Error Rate > 5% for 5 minutes.
+- **Alerting:** Define SLOs. Alerts must trigger if Error Rte > 5% for 5 minutes.

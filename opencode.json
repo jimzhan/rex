@@ -8,7 +8,7 @@
     "general": { "disable": true }
   },
   "instructions": [
-    "docs/instructions.md"
+    "docs/context.md"
   ],
   "mcp": {
     "codegraph": {

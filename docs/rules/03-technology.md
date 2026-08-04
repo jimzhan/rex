@@ -3,10 +3,14 @@
 Enforce the following technology stack for implementation.
 
 - **Auth Strategy**: Session-based with Redis (session store)
+- **Internationalization**: `i18next`
+- **Caching**: `Redis`
+- **Database**: `PostgreSQL` — all tables **MUST** use UUID v7 as the primary key.
+
 - **Runtime**: Node.js v24 (LTS)
 - **Language**: TypeScript (strict mode)
-- **Internationalization**: `i18next`
 - **Build Tool**: `Vite`
+
 - **Backend**
   - **Framework**: `Hono`
   - **ORM**: `Drizzle`
@@ -16,14 +20,13 @@ Enforce the following technology stack for implementation.
   - **API Documentation**: `@hono/zod-openapi`
   - **Authentication**: `better-auth`
   - **Logging**: `Pino`
-- **Caching**: `Redis`
-- **Database**: `PostgreSQL` — all tables **MUST** use UUID v7 as the primary key.
 - **Frontend**
   - **Framework**: `React` + `React Router`
   - **CSS Framework**: `TailwindCSS`
   - **State Management**: `Zustand`
   - **Testing**: `Vitest` (Unit), `Playwright` (E2E)
   - **Linting & Formatting**: `@biomejs/biome`
+
 - **IaC**: `Terraform`
 - **Container**: `Podman`
 - **Package Manager**: `pnpm`
