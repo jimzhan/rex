@@ -1,6 +1,5 @@
-# Technology Overview
+# Technology Stack & Governance
 ---
-title: "Technology Stack & Development Guidelines"
 description: "Comprehensive technology specification and development workflow for a modular monolith monorepo."
 ---
 
@@ -85,7 +84,7 @@ description: "Comprehensive technology specification and development workflow fo
 - **Data Seeding:** Standardized fixtures for local and test environments using Drizzle's seeding capabilities.
 
 
-## 6. Testing Strategy (The Test Pyramid)
+## 6. Testing Strategy
 
 - **Unit Tests:**
   - **Backend:** `Vitest` (>= **80%**).
