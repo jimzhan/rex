@@ -3,7 +3,11 @@
 ## 1. Project Overview
 
 <!-- Your Project Intro below, 2-sentence summary. -->
+
 <!-- End of Your Project Intro -->
+
+
+## 2. Core Principles
 
 - **Core Architectural Style:** Modular Monolith with clear bounded contexts.
 - **Guiding Principles:**
@@ -13,8 +17,8 @@
   - **Security First:** Session-based authentication with Redis.
 
 
-## Technology Stack & Governance
+## 3. Technology Stack & Governance
 
-Read the following file immediately as it's relevant to all workflows:
+Read the following file(s) immediately, all plans, implementations and workflows **MUST** strictly comply with the rules defined in the following documents; any deviation requires explicit justification and approval.
 
 1. `@docs/rules/technology.md`

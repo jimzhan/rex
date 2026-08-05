@@ -8,7 +8,9 @@ description: "Comprehensive technology specification and development workflow fo
 - **Language:** TypeScript (strict mode)
 - **Runtime:** Node.js v24 (LTS)
 - **Build Tool:** `Vite`
+- **Package Manager**: `pnpm`
 - **Internationalization:** `i18next`
+- **Infrastructure** `Podman` for local containers, Kubernetes, Terraform for IaC.
 - **Backend**
   - **API Framework:** `Hono`
   - **ORM:** `Drizzle`
@@ -28,7 +30,6 @@ description: "Comprehensive technology specification and development workflow fo
   - **Primary OLTP:** `PostgreSQL`
     - **Primary Key Standard:** All tables **MUST** use UUID v7 as the primary key.
   - **Caching:** `Redis`
-- **Infrastructure** `Podman` for local containers, Kubernetes, Terraform for IaC.
 
 
 ## 2. Folder Structure & Modularization
