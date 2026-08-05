@@ -1,23 +1,22 @@
 ---
-name: spec
-description: "Analyze an idea from <Ticket URL | Local file | Free text>, convert it into a technical design spec and WBS in an isolated Git worktree."
-argument-hint: "<ticket-url | local-file-path | free-text>"
+name: spec-old
+description: "Analyze an idea from <Issue URL | Local file | Free text>, convert it into a technical design spec in an isolated Git worktree."
+argument-hint: "<issue-url | local-file-path | free-text>"
 ---
 
 # Spec
 
-Think through your idea and turn it into a technical design specification and a detailed WBS for execution.
+Think through your idea and turn it into a technical design spec.
 
 ## Ground Rules
 
 - **MUST** verify the requirement is provided before proceeding. If missing, ask the user for it.
-- **Naming Convention**
-  - **MUST** extract ticket ID from the given source, if missing, generate a zero-padded three‑digit sequential number starting from `001` (e.g., `001`, `002`).
-  - **MUST** generate the `ticket-slug` by taking the key of the requirement and converting it to kebab-case (e.g., `oauth-flow`).
-- **Artifacts Store**
-  - **MUST** use `@docs/tickets/` as the root for all new artifacts.
-  - **MUST** use `<ticket-id>-<ticket-slug>.<spec | plan>.md` under the ***root*** for all new spec or plan files.
-- **DO NOT** proceed with the **Execution Handoff**.
+- **DO NOT** invoke `/writing-plans` to create an implementation plan.
+- **Ticket ID & Slug Generation**:
+  - If the source is a URL (e.g., Jira, Linear, GitHub), attempt to extract the ticket ID (e.g., `PROJ-123`, `XXX-12`, `GH-456`).
+  - If no ID can be extracted (e.g., free text or local file), scan the existing `docs/specs/` directory and generate a zero-padded three‑digit sequential number starting from `001` (e.g., `001`, `002`).
+  - Generate the `slug` by taking the key of the requirement and converting it to kebab-case (e.g., `add-oauth-flow`).
+- **MUST** use `docs/specs/<ticket-id>-<slug>.md` for all new spec files.
 
 ## The Process
 
@@ -25,7 +24,7 @@ Think through your idea and turn it into a technical design specification and a 
 
 ### Step 1: Create an isolated workspace
 - Run `/using-git-worktrees` to create a dedicated Git worktree.
-  - **Naming convention:** Use `<ticket-id>-<ticket-slug>` for the worktree directory and branch name.
+  - **Naming convention:** Use `<ticket-id>-<slug>` for the worktree directory and branch name.
 - Verify that the worktree is successfully created: the directory exists, and the new branch is checked out.
 - Once verified, switch your shell context into the new worktree directory.
 - **AC** Confirm the new Git worktree is ready and is the current working directory. If creation fails, halt and report the error.
@@ -37,9 +36,12 @@ Think through your idea and turn it into a technical design specification and a 
 ### Step 3: Review and obtain explicit approval
 - Present a concise summary of the generated spec to the user (e.g., the file path and a brief outline).
 - Explicitly request user's **written approval** to finalize the spec.
+- If the user requests changes: re-run ***Step 2***.
+- If the user rejects the proposal for good:
+  - Halt the process gracefully.
+  - Inform the user how to clean up the worktree if desired (e.g., `git worktree remove <path>`).
 - **AC** The spec has been reviewed and explicitly approved by the user in writing.
 
-### Step 4: Create a detailed WBS
-  - Run `/writing-plans` to generate a detailed, actionable execution plan.
-  - **Output Artifact** Write the final execution plan **inside the newly created Git worktree**.
-  - **AC** Present a concise summary of all generated artifacts for user review and ***stop***.
+---
+
+**Next Step:** Once the spec is approved, inform the user that the isolated workspace is ready. **DO NOT** run `/plan` automatically - wait for the user to explicitly invoke it. The next command is `/plan`.
