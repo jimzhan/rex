@@ -6,26 +6,26 @@ description: "Comprehensive technology specification and development workflow fo
 ## 1. Technology Stack
 
 - **Language:** TypeScript (strict mode)
-- **Runtime:** Node.js v24 (LTS)
-- **Build Tool:** `Vite`
-- **Package Manager**: `pnpm`
+- **Runtime:** Bun v1.3+
+- **Package Manager**: `Bun`
+- **Linting & Formatting:** `@biomejs/biome`
 - **Internationalization:** `i18next`
 - **Infrastructure** `Podman` for local containers, Kubernetes, Terraform for IaC.
 - **Backend**
   - **API Framework:** `Hono`
   - **ORM:** `Drizzle`
   - **Testing:** `Vitest` (Unit & Integration)
-  - **Validation:* `Zod`
+  - **Validation:** `Zod`
   - **Configuration:** `c12`
   - **API Documentation:** `@hono/zod-openapi`
   - **Authentication:** `better-auth`
   - **Logging:** `Pino`
 - **Frontend**
+  - **Build Tool:** `Vite`
   - **UI Framework:** `React` + `React Router`
   - **Styling:** `TailwindCSS`
   - **State Management:** `Zustand`
   - **Testing:** `Vitest` (Unit), `Playwright` (E2E)
-  - **Linting & Formatting:** `@biomejs/biome`
 - **Data Storage**
   - **Primary OLTP:** `PostgreSQL`
     - **Primary Key Standard:** All tables **MUST** use UUID v7 as the primary key.
