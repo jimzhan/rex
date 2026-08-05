@@ -5,7 +5,7 @@
 ## 1. Prerequisites
 Before proceeding, verify or instruct the user to ensure the following are installed on their local machine:
 - **Git**: `v2.30+` (Required for cloning and version control checks).
-- **Node.js**: `v22+` LTS (Required for cross-platform, non-destructive merge logic and script execution).
+- **Bun**: `v1.3+` (Required for cross-platform, non-destructive merge logic and script execution).
 - **OpenCode CLI**: Latest version (Installed globally).
 
 ## 2. Goal
