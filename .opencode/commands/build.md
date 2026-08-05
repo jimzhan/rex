@@ -15,7 +15,8 @@ permission:
 
 1. **Create an isolated workspace**:
   - **Prerequisite Check:** Before initiating this step, **MUST** verify the requirement is provided. If missing, ask for it.
-  - Run `/using-git-worktrees` to create a dedicated Git worktree (Naming convention: `<YYYYMMDD>-<ticket-id>-<feature-name>` if a ticket ID is present; otherwise, use `<YYYYMMDD>-<feature-name>`.) that will isolate all planning and implementation artifacts.
+  - Use the provided ticket ID as the primary reference; if none is given, generate a zero-padded three‑digit sequential number starting from `001`.
+  - Run `/using-git-worktrees` to create a dedicated Git worktree (Naming convention: `<ticket-id>-<feature-name>` that will isolate all planning and implementation artifacts.
   - Verify that the worktree is successfully created, the directory exists, and the new branch is checked out.
   - Once verified, switch into the new worktree directory.
   - **Completion Criterion:** Confirm the new Git worktree is ready and is the current working directory. **DO NOT** move to Step 2 until this finishes successfully.
