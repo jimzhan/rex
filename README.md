@@ -6,7 +6,7 @@
 
 - **[OpenCode](https://github.com/anomalyco/opencode)** – Model-agnostic agent orchestration.
   - **[Oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim)** – A Multi-Agent System (MAS) for OpenCode, featuring a specialized agent team that scans codebases, fetches docs, audits architecture, builds UI, and runs scoped implementation tasks via a single orchestrator. [Meet your team here](https://github.com/alvinunreal/oh-my-opencode-slim#meet-the-pantheon).
-- **[Practical engineering experience](docs/rules/technology.md)*** along with a composable skillset provided by [Superpowers](https://github.com/obra/superpowers).
+- **[Practical engineering experience](docs/rules/technology.md)** along with a composable skillset provided by [Superpowers](https://github.com/obra/superpowers).
 
 
 ## 1. Installation
