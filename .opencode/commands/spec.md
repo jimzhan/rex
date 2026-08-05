@@ -1,10 +1,10 @@
 ---
-name: new
+name: spec
 description: "Analyze an idea from <Issue URL | Local file | Free text>, convert it into a technical design spec in an isolated Git worktree."
 argument-hint: "<issue-url | local-file-path | free-text>"
 ---
 
-# New
+# Spec
 
 Think through your idea and turn it into a technical design spec.
 
