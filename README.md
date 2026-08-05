@@ -1,5 +1,8 @@
 <a href="#"><img alt="rex" src="https://raw.githubusercontent.com/goanywhere/rex/assets/images/rex.png" width="160px" height="64px"></a>
 ===
+
+> **Status** Draft
+
 ***Rex*** is an opinionated AI-powered boilerplate designed for model-agnostic and Multi-Agent System (MAS) AI engineering. Built entirely on top of the `OpenCode` ecosystem, it provides battlefield-tested defaults to ship distributed web applications faster.
 
 ***What's included?***
