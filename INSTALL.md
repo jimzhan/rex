@@ -38,10 +38,12 @@ Safely copy the following template files and directories into the target project
 - `docs/`
 - `opencode.json`
 - `.editorconfig`
+- `.gitattributes`
+- `.gitignore`
 
 ### B. Merge (If they already exist)
 - **`AGENTS.md`**: **Append** the instruction block to the end of the file. **Do not** remove, truncate, or alter any existing user instructions.
-- **`README.md`**: Do **not** modify unless the user explicitly requests project documentation updates.
+- **`README.md`**: **Do not** modify unless the user explicitly requests project documentation updates.
 
 ## 6. Step-by-Step Installation Execution
 
