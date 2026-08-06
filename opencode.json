@@ -9,7 +9,7 @@
   },
   "instructions": [
     "docs/context.md",
-    ".opencode/always-on/technology.md"
+    ".opencode/always-on/*.md"
   ],
   "mcp": {
     "codegraph": {

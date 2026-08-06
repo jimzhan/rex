@@ -1,28 +1,30 @@
 ---
 name: build
-description: "Implement against the execution plan in an isolated Git worktree."
+description: "Implement an approved execution plan within a dedicated Git worktree. This command assumes a prior `plan` phase produced a detailed task list. It isolates changes to avoid interfering with the main branch, verifies the plan's validity, delegates implementation to a focused subagent, and performs final checks before offering to merge."
 ---
-
 # Build
 
-Implement against the execution plan in an isolated Git worktree.
+Implement an approved execution plan within a dedicated Git worktree.
+
 
 ## Ground Rules
 
-- **MUST** verify the requirement is provided before proceeding. If missing, ask the user for it.
-- **DO NOT** invoke `/writing-plans` to create an implementation plan.
-- **Ticket ID & Slug Generation**:
-  - If the source is a URL (e.g., Jira, Linear, GitHub), attempt to extract the ticket ID (e.g., `PROJ-123`, `XXX-12`, `GH-456`).
-  - If no ID can be extracted (e.g., free text or local file), scan the existing `docs/specs/` directory and generate a zero-padded three‑digit sequential number starting from `001` (e.g., `001`, `002`).
-  - Generate the `slug` by taking the key of the requirement and converting it to kebab-case (e.g., `add-oauth-flow`).
-- **MUST** use `docs/specs/<ticket-id>-<slug>.md` for all new spec files.
+- **MUST** confirm the CWD is a Git worktree with the corresponding branch.
+- **Convention**
+  - **MUST** use `@docs/tickets/` as the ***root** for all plans.
 
-## The Process
 
-### Step 1: **Start implementation**:
-  - **Prerequisite Check:** Before initiating this step, **MUST** verify:
-    - **Step 3** has successfully generated the execution plan inside the worktree **and** the user has explicitly approved that plan.
-    - Ensure you are operating within the isolated worktree directory
-  - Run `/subagent-driven-development` to execute the approved plan task by task, committing progress incrementally.
-  - Monitor the subagent's output and handle any intermediate failures according to its own error-handling rules. If the subagent cannot proceed, halt and report to the user.
+## Process
 
+**Critical Rule:** Execute the following steps in **strict sequential order**. **DO NOT** proceed to the next step until the current step's **AC** are fully met. If any step fails irrecoverably, halt immediately and report the failure to the user with a clear explanation.
+
+### Step 1: Validate environment and plan
+- Extract Ticket ID and Slug from current branch name.
+- Search for an approved execution plan file (e.g., `<id>-<slug>.plan.md`) in the ***root***. If none exists, prompt the user to specify the correct plan.
+- Present a concise summary of implementation status of the plan to the user.
+- Explicitly request the user to provide **explicit written approval** (e.g., "Approved", "Proceed", or similar affirmative response).
+- **AC** The plan exists inside the worktree and not full implemented, the user has typed an explicit approval phrase after the summary was presented.
+
+### Step 2: Execute implementation via subagent
+- Run `/subagent-driven-development` to execute the approved plan task by task, committing progress incrementally.
+- Monitor the subagent's output in real time. If the subagent crashes or stalls, attempt a graceful restart with the same plan; if persistent, escalate to the user.
