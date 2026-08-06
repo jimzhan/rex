@@ -6,12 +6,7 @@ description: "Implement an approved execution plan within a dedicated Git worktr
 
 Implement an approved execution plan within a dedicated Git worktree.
 
-
-## Ground Rules
-
-- **MUST** confirm the CWD is a Git worktree with the corresponding branch.
-- **Convention**
-  - **MUST** use `@docs/tickets/` as the ***root** for all plans.
+**MUST** validate that the `CWD` is inside a Git worktree and the active branch matches the `<id>-<slug>` of the current ticket. Halt execution immediately if this validation fails.
 
 
 ## Process
@@ -20,7 +15,7 @@ Implement an approved execution plan within a dedicated Git worktree.
 
 ### Step 1: Validate environment and plan
 - Extract Ticket ID and Slug from current branch name.
-- Search for an approved execution plan file (e.g., `<id>-<slug>.plan.md`) in the ***root***. If none exists, prompt the user to specify the correct plan.
+- Search for an approved execution plan file (e.g., `<id>-<slug>.plan.md`) in the **Base Path**. If none exists, prompt the user to specify the correct plan.
 - Present a concise summary of implementation status of the plan to the user.
 - Explicitly request the user to provide **explicit written approval** (e.g., "Approved", "Proceed", or similar affirmative response).
 - **AC** The plan exists inside the worktree and not full implemented, the user has typed an explicit approval phrase after the summary was presented.

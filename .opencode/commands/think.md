@@ -11,8 +11,6 @@ Think through your idea and turn it into a technical design specification and a 
 
 - **MUST** verify the requirement is provided before proceeding. If missing, ask the user for it.
 - **Convention**
-  - **MUST** use `@docs/tickets/` as the ***root** for all new artifacts.
-  - **MUST** use `<id>-<slug>.<spec | plan>.md` under the ***root*** for all new spec and plan files.
   - **MUST** extract ticket ID from the given source, if missing, generate a zero-padded 3‑digit sequential number starting from `001` (e.g., `001`, `002`).
   - **MUST** generate the `slug` by taking the key of the requirement and converting it to kebab-case (e.g., `oauth-flow`).
   - **MUST** use `<id>-<slug>` for the Git worktree directory and branch name.
