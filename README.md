@@ -40,10 +40,12 @@ config:
   theme: forest
 ---
 flowchart LR
-  Build["<b>/build</b> <i>what's required</i>"]
+  Think["<b>/think</b> <i>what's required</i>"]
+  Build["<b>/build</b> <i>against the plan</i>"]
   Review["<b>/review</b> <i>implementations</i>"]
   Ship["<b>/ship</b> to <i>production</i>"]
 
+  Think --> Build
   Build --> Review
   Review --> Ship
 ```
@@ -51,51 +53,23 @@ flowchart LR
 
 ### 2.2 Commands
 
-- `/build` serves as the engine of the entire workflow. When invoked, it executes the following sequential steps:
-  1. **Isolate** – Create a dedicated workspace using Git worktree to keep changes sandboxed.
-  2. **Explore** – Begin by specifying your intent via one of these input types: *`<issue-url | local-file-path | free-text>`*.
-  3. **Design** – Generate a comprehensive technical design specification and break it down into granular, executable tasks.
-  4. **Implement** – Execute the generated tasks to produce the final implementation.
+- `/think` serves as the engine of entire workflow with the following sequential steps:
+  - ***Isolate*** - a dedicated workspace using Git worktree to keep changes sandboxed.
+  - ***Explore*** - your intent via one of these input types: *`<ticket-url | local-file-path | free-text>`*.
+  - ***Design*** - a comprehensive technical design specification and break it down into granular, executable tasks.
+
+- `/build` implements the structural execution plan.
 
 
 ## 3. Customization
 
-### 3.1 oh-my-opencode-slim
+- ***Agents Team*** - create your preset in `.opencode/oh-my-opencode-slim.jsonc` to specify the model, temperature, variants, skills, and MCPs for each agent.
+  - `temperature` - standard LLM sampling parameter, controls ***how*** the agent says things (rigid vs. flexible).
+  - `variant` - specific to `opencode`, controls ***how hard*** (with more tokens) the agent thinks (shallow vs. deep).
+- ***Project Context***
+  - Define your prject context in `docs/context.md`.
+  - Incorporate your detailed technology standards in `.opencode/always-on/technology.md` ***if deemed necessary***.
 
-The default MAS preset is `opencode`  with free models provided by `OpenCode`. To maximize the capabilities of your subscribed AI models, create a custom preset in `.opencode/oh-my-opencode-slim.jsonc` to specify the model, temperature, variants, skills, and MCPs for each agent. ***Example***
-
-```json
-{
-  "preset": "gpt-5.6-codex",
-  "presets": {
-    "gpt-5.6-codex": {
-      "orchestrator": { "model": "openai/gpt-5.6-terra", "temperature": 0.4, "skills": ["*"], "mcps": ["*", "!context7"] },
-      "oracle":       { "model": "openai/gpt-5.6-sol", "temperature": 0.4, "variant": "max", "skills": ["simplify"], "mcps": [] },
-      "explorer":     { "model": "openai/gpt-5.6-luna", "temperature": 0.2, "skills": [], "mcps": [] },
-      "librarian":    { "model": "openai/gpt-5.6-luna", "temperature": 0.2, "skills": [], "mcps": ["websearch", "context7", "gh_grep"] },
-      "designer":     { "model": "openai/gpt-5.6-terra", "temperature": 0.3, "variant": "medium", "skills": [], "mcps": [] },
-      "fixer":        { "model": "openai/gpt-5.6-terra", "temperature": 0.2, "variant": "high", "skills": [], "mcps": [] },
-      "observer":     { "model": "openai/gpt-5.6-luna", "temperature": 0.2, "variant": "low", "skills": [], "mcps": [] }
-    }
-  }
-}
-```
-
-> [!TIP]
->
-> `temperature` - standard LLM sampling parameter, controls ***how*** the agent says things (rigid vs. flexible).
->
-> `variant` - specific to `opencode`, controls ***how hard*** (with more tokens) the agent thinks (shallow vs. deep).
-
-
-
-### 3.2 Project Spec
-
-- Define your prject context in `docs/context.md`.
-- Incorporate your detailed technology standards in `docs/rules/technology.md` ***if deemed necessary***.
-
-
-### 3.3 Extras
 
 > [!TIP]
 > Not included, but highly recommended:
