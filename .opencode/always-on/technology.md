@@ -79,7 +79,7 @@ description: "Comprehensive technology specification and development workflow fo
   - **File names:** `kebab-case.ts` (for TS/TSX), `snake_case.sql` (for migrations).
   - **Classes/Interfaces:** `PascalCase`.
   - **Functions/Variables:** `camelCase`.
-- **Commenting:** Public APIs **must** have JSDoc style comments. Private logic should explain *"why"*, not *"what"*.
+- **Commenting:** Public APIs **must** have `TypeDoc` style comments. Private logic should explain *"why"*, not *"what"*.
 
 
 ## 4. Git Workflow & Commit Strategy
