@@ -8,7 +8,8 @@
     "general": { "disable": true }
   },
   "instructions": [
-    "docs/context.md"
+    "docs/context.md",
+    ".opencode/always-on/technology.md"
   ],
   "mcp": {
     "codegraph": {

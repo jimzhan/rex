@@ -1,0 +1,15 @@
+# Enforce LF line endings for all text files (on commit and checkout)
+* text eol=lf
+
+# Binary assets – never convert, never diff
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.webp   binary
+*.pdf    binary
+*.mp4    binary
+*.mov    binary
+*.avi    binary
+*.mkv    binary
