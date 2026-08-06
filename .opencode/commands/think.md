@@ -18,7 +18,7 @@ Think through your idea and turn it into a technical design specification and a 
   - **MUST** use `<id>-<slug>` for the Git worktree directory and branch name.
 - **DO NOT** invoke `/subagent-driven-development` or `/executing-plans` for implementation.
 
-## The Process
+## Process
 
 **Critical Rule:** Execute the following steps in **strict sequential order**. **DO NOT** proceed to the next step until the current step's **AC** are fully met. If any step fails irrecoverably, halt immediately and report the failure to the user with a clear explanation.
 
