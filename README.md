@@ -58,7 +58,7 @@ flowchart LR
   - ***Explore*** - your intent via one of these input types: *`<ticket-url | local-file-path | free-text>`*.
   - ***Design*** - a comprehensive technical design specification and break it down into granular, executable tasks.
 
-- `/build` implements the structural execution plan.
+- `/build` implements against the structural execution plan.
 
 
 ## 3. Customization
